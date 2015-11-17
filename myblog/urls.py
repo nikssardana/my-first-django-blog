@@ -7,4 +7,5 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'',include('blogApp.urls')), #pass on the url to blogApp's urls.py file for further processing
 ]
