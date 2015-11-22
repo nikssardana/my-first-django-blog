@@ -1,19 +1,21 @@
+{% load staticfiles %}
 <html>
 <head>
     <title>Niks' Blog</title>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
 </head>
 <body>
-<div>
+<div class="page-header">
     <h1><a href="">My blog</a></h1>
 </div>
+
 <div>
-    <p>Published:17.11.2015</p>
-    <h2><a href="">My first post</a></h2>
-    <p>This is a sample text that is present here just for fun. It simply does not mean anything</p>
+<h2>This div contains the result of query</h2>
+{{posts}}
 </div>
 
 <div>
@@ -24,21 +26,23 @@
     {% endfor %}
 </div>
 
-<div>
-<h2>This div contains the result of query</h2>
-{{posts}}
-</div>
 
-
-{% for post in posts %}
-<div>
-    <h2>This div is in a loop and contains the posts in the form we like them to be</h2> 
-    <p>Published: {{ post.published_date }}</p>
-    <h1><a href="">{{ post.title }}</a></h1>
-    <p>{{ post.text|linebreaks }}</p>
-</div>
-
+<h2>This div contains the posts in the format we like them to be</h2> 
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>Published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaks }}</p>
+                </div>
 {% endfor %}
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
