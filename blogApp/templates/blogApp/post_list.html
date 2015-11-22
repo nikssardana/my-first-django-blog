@@ -13,10 +13,28 @@
 </div>
 
 <div>
-    <p>Published:17.11.2015</p>
-    <h2><a href="">My second post</a></h2>
-    <p>This is some more useless text that is present here just for fun. It simply does not mean anything</p>
+    <h2>This div contains dynamic posts</h2>
+    {% for post in posts %}
+        {{post}}
+        <br>
+    {% endfor %}
 </div>
+
+<div>
+<h2>This div contains the result of query</h2>
+{{posts}}
+</div>
+
+
+{% for post in posts %}
+<div>
+    <h2>This div is in a loop and contains the posts in the form we like them to be</h2> 
+    <p>Published: {{ post.published_date }}</p>
+    <h1><a href="">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaks }}</p>
+</div>
+
+{% endfor %}
 
 </body>
 </html>
