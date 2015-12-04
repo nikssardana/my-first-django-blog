@@ -15,7 +15,7 @@ def post_detail(request,pk):
     #pk is the primary key of the post and is passed on by the urls.py file to this view
 
 
-    #post = Post.objects.get(pk=pk) can be used, but abad looking error is returned when the requested page is not found
+    #post = Post.objects.get(pk=pk) can be used, but a bad looking error is returned when the requested page is not found
 
     post = get_object_or_404(Post,pk=pk)
     return render(request,'blogApp/post_detail.html',{'post':post})
